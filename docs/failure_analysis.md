@@ -16,7 +16,7 @@ I also checked whether the nearest neighbours disagreed with the model's predict
 
 ## Stereoisomers
 
-Molecules m00450 and m00449 are stereoisomers. Both received the same probability (0.98849) and the same top-1 similarity (0.2375). My Morgan fingerprints do not encode chirality, so retrieval cannot tell these two apart. That is a limitation of my fingerprint setup. The identical probability is consistent with the model also not separating them, but I have not checked how the tokenizer handles the stereochemistry marks in the SMILES, so I can't say why. [Check: do both molecules have the same top-1 neighbour? Same similarity suggests so, but I haven't confirmed it.]
+Molecules m00450 and m00449 are stereoisomers. Both received the same probability (0.98849) and the same top-1 similarity (0.2375). My Morgan fingerprints do not encode chirality, so retrieval cannot tell these two apart. That is a limitation of my fingerprint setup. The identical probability is consistent with the model also not separating them, but I have not checked how the tokenizer handles the stereochemistry marks in the SMILES, so I can't say why. I checked the retrieval output for both molecules. Their SMILES differ only at one stereocentre (`[C@@H]` in m00449, `[C@H]` in m00450), so they are diastereomers. Both retrieved the same five training neighbours, in the same order and with the same similarities (top-1 is m00472 at 0.2375). This is what I would expect, because my Morgan fingerprints do not encode chirality and so give the two molecules the same fingerprint.
 
 ## What I would test next (not done yet)
 
